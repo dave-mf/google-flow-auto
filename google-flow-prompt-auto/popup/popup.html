@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flow Prompt Auto</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="header">
+      <div>
+        <h1>Flow Prompt Auto</h1>
+        <p>Upload TXT, lalu jalankan prompt satu per satu di Google Flow.</p>
+      </div>
+      <span id="statusPill" class="pill">idle</span>
+    </header>
+
+    <section id="uploadPanel" class="panel upload-panel">
+      <label class="file-label" for="promptFile">File prompt .txt</label>
+      <input id="promptFile" type="file" accept=".txt,text/plain">
+      <p id="fileInfo" class="muted">Belum ada file dipilih.</p>
+    </section>
+
+    <section class="grid settings">
+      <label>
+        Timeout hasil
+        <input id="timeoutSeconds" type="number" min="30" step="10" value="30">
+      </label>
+      <label>
+        Delay setelah hasil
+        <input id="settleSeconds" type="number" min="1" step="1" value="5">
+      </label>
+    </section>
+
+    <section class="progress-box">
+      <div class="progress-head">
+        <strong id="progressText">0 / 0</strong>
+        <span id="completedText">Selesai: 0</span>
+      </div>
+      <div class="bar"><span id="progressBar"></span></div>
+      <p id="statusMessage" class="message">Siapkan file prompt, buka halaman Google Flow, lalu klik Start.</p>
+    </section>
+
+    <section class="actions">
+      <button id="startBtn" class="primary">Start</button>
+      <button id="pauseBtn">Pause</button>
+      <button id="resumeBtn">Resume</button>
+      <button id="nextBtn">Next</button>
+      <button id="stopBtn" class="danger">Stop</button>
+      <button id="resetBtn">Reset</button>
+    </section>
+
+    <section class="preview">
+      <div class="preview-head">
+        <strong>Preview Prompt</strong>
+        <span id="promptCount">0 prompt</span>
+      </div>
+      <ol id="promptList"></ol>
+    </section>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>
